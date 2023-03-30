@@ -14,4 +14,8 @@ This will be done in the Pipeline subfolder of the repository.  The main script 
 1. The second cell will attempt to install Octave on the runtime.  Two additional packgates names "image" and "dataframe" will need ot be installed before continuing.  You can install the packges directly from sourceforge, or if you have the .zip files included, you will need to change the file paths in this cell so that they lead to the location of these two .zip files.
 2. The fourth cell whose heading is "Directory Configuration" will need two lines changed indicating the location of the repository on your Google Drive as well as its parent directory.  Google Drive typically places anything involving the use of Colab into a directory called "Colab Notebooks", but the repository can be placed into any location of your choosing.  You just need to remember where you placed the repository.
 
+Training a new model:
 
+In the third cell, there are a set of variables and paramters to change.  Make sure "train_model" is set to True.  If you want to train the U-Net implementation used in that paper, set "use_test_network" to False.  Otherwise, if you want to use a small network for checking that each section runs okay, then set this variable to True.
+
+Make sure to go into the "Directory Configuration" cell and change the variable "weights_file".  This is a string which will be the name of the file containing the asved weights from training.
