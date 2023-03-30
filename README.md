@@ -9,7 +9,9 @@ This will be done in the Image Generation subfolder of the repository.  If you h
 
 Training, Segmentation, and CLassification
 
-This will be done in the Pipeline subfolder of the repository.  The main script is titled _2023_03_01.ipynb and can be open using Google Colaboratory.  There are  afew lines that must be changed in order for this to run within your particular drive.
+This will be done in the Pipeline subfolder of the repository.  The main script is titled _2023_03_01.ipynb and can be open using Google Colaboratory.  There are  afew lines that must be changed in order for this to run within your particular drive account.
 
 1. The second cell will attempt to install Octave on the runtime.  Two additional packgates names "image" and "dataframe" will need ot be installed before continuing.  You can install the packges directly from sourceforge, or if you have the .zip files included, you will need to change the file paths in this cell so that they lead to the location of these two .zip files.
-2. The fourth cell whose heading is "Directory Configuration will need two lines changed indicating the location of the repository on your Google Drive as well as its parent directory.  Google Drive typically places anythin involving the use of Colab.
+2. The fourth cell whose heading is "Directory Configuration" will need two lines changed indicating the location of the repository on your Google Drive as well as its parent directory.  Google Drive typically places anything involving the use of Colab into a directory called "Colab Notebooks", but the repository can be placed into any location of your choosing.  You just need to remember where you placed the repository.
+
+
