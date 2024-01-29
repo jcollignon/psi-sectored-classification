@@ -35,8 +35,19 @@ In the third cell, there are a set of variables and paramters to change.  Make s
 Do the same thing as in the case where you would like to train a new model, but change the value of `weights_file` so that you don't overwrite another existing one.
 
 
-THE EXPTRACTION COMPONENT:
+THE EXTRACTION COMPONENT:
 
 Once you have a set of weights saved, make sure the model implementation is loaded before continuing.
 
+THE CLASSIFICATION COMPONENT:
+
+The notebook will iterate through each colony extracted and attempt to classify each colony based on the number of red and white regions preseing in its segmentation.  The steps performed on each colony are as follows:
+- Partition the segmnetation into its interior and boudnary pixels.
+- Further partition the interior and boundary regions into their correspinding red and white regions
+- Count the number of connected components of red and white pixels on the boundary.  These are the initial predictions for the number of red and white regions respectively.
+- Define the color of the region to be the color of the pixels on the outer boundary of the region.
+- Check that each region satisfies the purity condition.  Purity of a red/white region is defined as the number of red/white colony pixels in a region with the same color as that region, divided by the number of colony pixels in that region.  More specifically, it is the proportion of colony pixels assigned the color of the region.
+- For regions where the purity condition is not satisfied, the color of the boundary pixels for such regions are replaced with the opposing color.  The steps for partitioning the regions of the colony are repeated.
+- Once all regions satisfy the purity constraint, the number of red and white regions remaining are predicted as the 'corrected' counts.
+- Colonies are classified based on the number of red and white regions.  Colonies are classified as 'sectored' if they have a red and white region present.  If there is no red region, the colony is classified as $[PSI^+]$.  Similarly, if there is no white region, the colony is classified as $[psi^-]$.
 
