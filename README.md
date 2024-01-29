@@ -14,7 +14,7 @@ This will be done in the Pipeline subfolder of the repository.  The main script 
 1. The second cell will attempt to install Octave on the runtime.  Two additional packgates names "image" and "dataframe" will need ot be installed before continuing.  You can install the packges directly from sourceforge, or if you have the .zip files included, you will need to change the file paths in this cell so that they lead to the location of these two .zip files.
 2. The fourth cell whose heading is "Directory Configuration" will need two lines changed indicating the location of the repository on your Google Drive as well as its parent directory.  Google Drive typically places anything involving the use of Colab into a directory called "Colab Notebooks", but the repository can be placed into any location of your choosing.  You just need to remember where you placed the repository.
 
-A Google Drive directory path usually starts with `"/content/gdrive/My Drive/Colab\ Notebooks/`, so if the respository is the following: `"/content/gdrive/My Drive/Colab\ Notebooks/this_repo`
+A Google Drive directory path usually starts with `"/content/gdrive/My Drive/Colab\ Notebooks/`, so if the respository is the following: `"/content/gdrive/My Drive/Colab\ Notebooks/this_repo`, then you should change this path so that it leads to the directory where you added the repostory.
 
 THE SEGMENTATION COMPONENT:
 
