@@ -3,11 +3,11 @@
 
 This code base is designed for implementation on Google Colaboratory.  You will first need to clone this repository, then upload the entire repository folder to a nice location on your Google Drive.  Make sure that the Google account you are using allows access to Google Colaboratory.
 
-Synthetic image generation:
+## Synthetic image generation:
 
-This will be done in the Image Generation subfolder of the repository.  If you have MATLAB installed, this will be much easier.  The main script here is "config_and_run.m", which will be the only script you need to edit and run this part of the process.
+This will be done in the Image Generation subfolder of the repository.  If you have MATLAB installed, this will be much easier.  The main script here is "config_and_run.m", which will be the only script you need to edit and run this part of the process.  This script will first create the folders and initialize the variables neeed for the image generation process, then will call the "Image_Generator.m" script which performs the synthetic image generation step.  Functions which are called for creating the images are stored in the "Functions" subfolder.
 
-Training, Segmentation, and Classification
+## Training, Segmentation, and Classification:
 
 This will be done in the Pipeline subfolder of the repository.  The main script is titled _2023_03_01.ipynb and can be open using Google Colaboratory.  There are  afew lines that must be changed in order for this to run within your particular drive account.
 
@@ -16,7 +16,7 @@ This will be done in the Pipeline subfolder of the repository.  The main script 
 
 A Google Drive directory path usually starts with `"/content/gdrive/My Drive/Colab\ Notebooks/`, so if the respository is the following: `"/content/gdrive/My Drive/Colab\ Notebooks/this_repo`, then you should change this path so that it leads to the directory where you added the repostory.
 
-THE SEGMENTATION COMPONENT:
+## The Segmentation Step:
 
 How to use this section will depend on whether the code has been run once before, whether the weights you want to use have been saved already, and whether you simply would like to start from scratch.
 
@@ -35,11 +35,11 @@ In the third cell, there are a set of variables and paramters to change.  Make s
 Do the same thing as in the case where you would like to train a new model, but change the value of `weights_file` so that you don't overwrite another existing one.
 
 
-THE EXTRACTION COMPONENT:
+## The Colony Extraction Step:
 
 Once you have a set of weights saved, make sure the model implementation is loaded before continuing.
 
-THE CLASSIFICATION COMPONENT:
+## The Classification Step:
 
 The notebook will iterate through each colony extracted and attempt to classify each colony based on the number of red and white regions preseing in its segmentation.  The steps performed on each colony are as follows:
 - Partition the segmnetation into its interior and boudnary pixels.
@@ -51,3 +51,6 @@ The notebook will iterate through each colony extracted and attempt to classify 
 - Once all regions satisfy the purity constraint, the number of red and white regions remaining are predicted as the 'corrected' counts.
 - Colonies are classified based on the number of red and white regions.  Colonies are classified as 'sectored' if they have a red and white region present.  If there is no red region, the colony is classified as $[PSI^+]$.  Similarly, if there is no white region, the colony is classified as $[psi^-]$.
 
+## Plotting Data
+
+The notebook script "Make_Plots.ipynb" is used solely for data visualization and plot generation following the conclusion of colony classification.
