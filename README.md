@@ -53,4 +53,4 @@ The notebook will iterate through each colony extracted and attempt to classify 
 
 ## Plotting Data:
 
-The notebook script "Make_Plots.ipynb" is used solely for data visualization and plot generation following the conclusion of colony classification.
+The notebook script "Make_Plots.ipynb" is used solely for data visualization and plot generation following the conclusion of colony classification.  The script loads in the shpreadsheet inside the "Pub Data" folder that contains the curated data from both images sets used in this study and creates a series of plots for visually analysing the performance of [PSI]-CIC.
