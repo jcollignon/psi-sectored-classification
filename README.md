@@ -51,6 +51,6 @@ The notebook will iterate through each colony extracted and attempt to classify 
 - Once all regions satisfy the purity constraint, the number of red and white regions remaining are predicted as the 'corrected' counts.
 - Colonies are classified based on the number of red and white regions.  Colonies are classified as 'sectored' if they have a red and white region present.  If there is no red region, the colony is classified as $[PSI^+]$.  Similarly, if there is no white region, the colony is classified as $[psi^-]$.
 
-## Plotting Data
+## Plotting Data:
 
 The notebook script "Make_Plots.ipynb" is used solely for data visualization and plot generation following the conclusion of colony classification.
