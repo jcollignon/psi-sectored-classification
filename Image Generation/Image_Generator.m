@@ -77,6 +77,8 @@ for this_image = 1:num_images
     
     % ------------------------------------------------------------
     % 4. Plot colonies (circles only)
+
+    random_color_white_colony = color_picker('colony_white');
     
     num_circles = round(avg_circles + circle_num_var*(2*(rand - 0.5)));
     colony_counts(this_image) = num_circles;
@@ -85,7 +87,7 @@ for this_image = 1:num_images
     [circle_centers, circle_radii] = generate_colony_centers_and_radii(num_circles, circle_size, circle_size_var, padding, inner_plate_radius, outer_plate_radius, min_border_distance);
     
     % Plot each circle in the image
-    plot_colonies(circle_centers, circle_radii, theta)
+    plot_colonies(circle_centers, circle_radii, theta, random_color_white_colony)
     
     % ------------------------------------------------------------
     % 5. Create outer circle (exterior of plate border)
