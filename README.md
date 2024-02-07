@@ -35,17 +35,18 @@ In the third cell, there are a set of variables and paramters to change.  Make s
 
 ## The Colony Extraction Step:
 
-Once you have a set of weights saved, make sure the model implementation is loaded before continuing.
+This section utilizes the `oct2py` package to run Octave functions on Google Colab.  Once you have a set of weights saved, make sure the model implementation is loaded before continuing.  The `image` and `dataframe` Octave packages must be loaded before this section is executed.  
 
-This section utilizes the `oct2py` package to run Octave functions on Google Colab.  The `image` and `dataframe` Octave packages must be loaded before this section is executed.  
+The notebok will iterate through each plate and predict a class for each pixel using a trained U-Net with a given `weights_file`.  The resulting predictions are a mask containing three colors to signifcy whether each pixel is in the background, is a red colony pixel, or is a white colony pixel.  Next, a binarized copy of the mask differentiating colony pixels in general from the background is created.  We then call `get_circular_data.m` which runs Octaves `imfindcircles` function on the binary mask in order to detected circular objects (the colonies).  The locations and sizes of the objects detected are recorded and saved in a csv file.  An image with the overlayed detected circular objects is also saved.
 
 ## The Classification Step:
 
 The notebook will iterate through each colony extracted and attempt to classify each colony based on the number of red and white regions preseing in its segmentation.  The steps performed on each colony are as follows:
-- Partition the segmnetation into its interior and boudnary pixels.
-- Further partition the interior and boundary regions into their correspinding red and white regions
-- Count the number of connected components of red and white pixels on the boundary.  These are the initial predictions for the number of red and white regions respectively.
-- Define the color of the region to be the color of the pixels on the outer boundary of the region.
+- Information on the location and size of the colony is referenced from the orignal image and its corresponding segmentation and extracted from both.
+- The segemntation is partitined into its interior and boudnary components.
+- The interior and boundary components are further partitioned into their corresponding red and white regions
+- The number of connected components of red and white pixels on the boundary are counted.  These are the initial predictions for the number of red and white regions respectively.
+- Regions of the colony are proposed.  The boundary of each region is drawn using Bresenham's line algorithm by connecting the center of the colony with the endpoints of a connected component on the colony boundary.  The interior of the region is defined as the pixels enclosed within the corresponding boundary region.  Finally, the color assigned to a region is the same as the color of the connected component of pixels on the colony boundary.
 - Check that each region satisfies the purity condition.  Purity of a red/white region is defined as the number of red/white colony pixels in a region with the same color as that region, divided by the number of colony pixels in that region.  More specifically, it is the proportion of colony pixels assigned the color of the region.
 - For regions where the purity condition is not satisfied, the color of the boundary pixels for such regions are replaced with the opposing color.  The steps for partitioning the regions of the colony are repeated.
 - Once all regions satisfy the purity constraint, the number of red and white regions remaining are predicted as the 'corrected' counts.
