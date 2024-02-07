@@ -1,5 +1,5 @@
 # psi-sectored-classification
- This is a pipeline for doing colony segmetation and classification of Saccharomyces cerevisiae colonies exhbiting $[PSI^+]$ and $[psi^-]$ phenotypes.
+ This is a pipeline for doing colony segmetation and classification of *Saccharomyces cerevisiae* colonies exhbiting $[PSI^+]$ and $[psi^-]$ phenotypes.
 
 This code base is designed for implementation on Google Colaboratory.  You will first need to clone this repository, then upload the entire repository folder to a nice location on your Google Drive.  Make sure that the Google account you are using allows access to Google Colaboratory.
 
